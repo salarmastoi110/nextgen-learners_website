@@ -1,0 +1,139 @@
+/* ============================================================
+   NextGen Learners — Responsive Breakpoints
+   ============================================================ */
+
+/* ---------- ≤ 1080px : collapse the nav into the hamburger ---------- */
+@media (max-width: 1080px) {
+  .navbar__toggle { display: flex; }
+  .navbar__more { display: none; }
+  .navbar__link--more-item { display: inline-flex; }
+
+  .navbar__menu {
+    position: fixed;
+    top: calc(var(--navbar-height) + var(--announcement-height));
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    padding: var(--space-4) var(--space-6);
+    gap: var(--space-1);
+    max-height: calc(100vh - var(--navbar-height));
+    overflow-y: auto;
+    transform: translateY(-130%);
+    transition: transform var(--transition);
+    z-index: var(--z-navbar);
+  }
+
+  body.announcement-hidden .navbar__menu { top: var(--navbar-height); }
+
+  .navbar__menu--open { transform: translateY(0); }
+  .navbar__link { width: 100%; padding: 0.85rem 1rem; }
+}
+
+/* ---------- ≤ 1100px ---------- */
+@media (max-width: 1100px) {
+  .details-grid { grid-template-columns: 1fr; }
+  .details-sidebar { position: static; }
+  .profile-grid { grid-template-columns: 1fr; }
+  .footer__grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ---------- ≤ 992px : mobile nav + portal sidebar ---------- */
+@media (max-width: 992px) {
+  .navbar__toggle { display: flex; }
+
+  .navbar__menu {
+    position: fixed;
+    top: calc(var(--navbar-height) + var(--announcement-height));
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    padding: var(--space-4) var(--space-6);
+    gap: var(--space-1);
+    max-height: calc(100vh - var(--navbar-height));
+    overflow-y: auto;
+    transform: translateY(-130%);
+    transition: transform var(--transition);
+    z-index: var(--z-navbar);
+  }
+
+  body.announcement-hidden .navbar__menu {
+    top: var(--navbar-height);
+  }
+
+  .navbar__menu--open { transform: translateY(0); }
+
+  .navbar__link { width: 100%; padding: 0.85rem 1rem; }
+
+  .hero__grid { grid-template-columns: 1fr; }
+  .hero { padding-block: var(--space-16); }
+
+  .portal { grid-template-columns: 1fr; }
+
+  .portal-sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    width: 280px;
+    transform: translateX(-100%);
+    transition: transform var(--transition);
+    z-index: var(--z-overlay);
+  }
+
+  .portal-sidebar--open { transform: translateX(0); }
+
+  .portal-sidebar__overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.5);
+    z-index: calc(var(--z-overlay) - 1);
+  }
+
+  .portal-header__menu-btn { display: flex; }
+  .portal-content { padding: var(--space-5); }
+}
+
+/* ---------- ≤ 768px ---------- */
+@media (max-width: 768px) {
+  h1, .section-heading__title, .page-hero__title { font-size: var(--font-size-2xl); }
+  h2 { font-size: var(--font-size-2xl); }
+
+  .section { padding-block: var(--space-12); }
+
+  .form-row { grid-template-columns: 1fr; }
+
+  .hero__actions { flex-direction: column; align-items: stretch; }
+
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+
+  .programs-grid,
+  .services-grid,
+  .courses-grid,
+  .internships-grid,
+  .projects-grid,
+  .testimonials-grid { grid-template-columns: 1fr !important; }
+
+  .partners-track { gap: var(--space-8); }
+
+  .footer__grid { grid-template-columns: 1fr; gap: var(--space-8); }
+  .footer__bottom { justify-content: center; text-align: center; }
+
+  .verify-result__details { grid-template-columns: 1fr; }
+
+  .announcement-bar { font-size: var(--font-size-xs); padding-inline: var(--space-10); }
+}
+
+/* ---------- ≤ 480px ---------- */
+@media (max-width: 480px) {
+  .navbar__actions .btn--outline { display: none; }
+  .auth-card { padding: var(--space-6); }
+  .stats-grid { grid-template-columns: 1fr; }
+  .filter-bar { gap: var(--space-2); }
+  .pagination { flex-wrap: wrap; }
+}

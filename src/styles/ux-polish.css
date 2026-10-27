@@ -1,0 +1,412 @@
+/* ============================================================
+   NextGen Learners — UX Polish Layer (loaded last)
+   Professional refinement + accessibility passes over the base
+   component styles. Keep overrides intentional and specific.
+   ============================================================ */
+
+/* ---------- 1. Accessibility fundamentals ---------- */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: -64px;
+  z-index: 2000;
+  background: var(--color-primary);
+  color: var(--text-inverse);
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+  padding: 0.7rem 1.2rem;
+  border-radius: var(--border-radius-sm);
+  box-shadow: var(--shadow-md);
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus { top: var(--space-4); }
+
+/* Respect reduced-motion preferences everywhere. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- 2. Typography rhythm ---------- */
+h1, h2, h3, h4 {
+  letter-spacing: -0.015em;
+  font-weight: 700;
+}
+
+.hero__title, .page-hero__title, .section-heading__title {
+  letter-spacing: -0.02em;
+}
+
+p { -webkit-font-smoothing: antialiased; }
+
+/* ---------- 3. Buttons: crisper, tactile ---------- */
+.btn {
+  letter-spacing: 0.01em;
+  font-family: var(--font-heading);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn:active:not(:disabled) { transform: translateY(1px) scale(0.99); }
+
+.btn--primary:hover:not(:disabled) { filter: brightness(1.05); }
+
+/* ---------- 4. Navbar: clearer active state ---------- */
+.navbar__link {
+  position: relative;
+  padding: 0.55rem 0.85rem;
+}
+
+.navbar__link--active {
+  background: transparent;
+  color: var(--color-primary);
+}
+
+.navbar__link--active::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 2px;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 3px;
+  border-radius: var(--border-radius-full);
+  background: var(--gradient-brand);
+}
+
+.navbar__link:hover { background: transparent; color: var(--color-primary); }
+
+@media (max-width: 1080px) {
+  .navbar__menu .navbar__link--active { background: var(--color-primary-light); }
+  .navbar__menu .navbar__link--active::after { display: none; }
+}
+
+/* ---------- 5. Page hero: premium depth ---------- */
+.page-hero {
+  position: relative;
+  overflow: hidden;
+  padding-block: var(--space-20) var(--space-16);
+  background:
+    radial-gradient(560px 220px at 18% 0%, rgba(46, 224, 161, 0.14), transparent 70%),
+    radial-gradient(480px 200px at 85% 100%, rgba(62, 166, 255, 0.10), transparent 70%),
+    var(--gradient-dark);
+}
+
+.page-hero__title {
+  font-size: clamp(2rem, 4vw, var(--font-size-4xl));
+  margin-bottom: var(--space-4);
+}
+
+.page-hero__subtitle {
+  font-size: var(--font-size-md);
+  line-height: 1.7;
+}
+
+.page-hero .hero__actions { justify-content: center; }
+
+/* ---------- 6. Home hero: living surface ---------- */
+.hero {
+  position: relative;
+  background:
+    radial-gradient(640px 300px at 12% 8%, rgba(46, 224, 161, 0.16), transparent 70%),
+    radial-gradient(520px 280px at 92% 88%, rgba(62, 166, 255, 0.12), transparent 70%),
+    var(--gradient-dark);
+  padding-block: clamp(var(--space-16), 8vw, 7rem);
+}
+
+/* subtle dot-grid texture */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 26px 26px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.9), transparent 75%);
+  -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.9), transparent 75%);
+  pointer-events: none;
+}
+
+.hero > .container { position: relative; z-index: 1; }
+
+/* teal glow disc behind the floating cards */
+.hero__visual::before {
+  content: '';
+  position: absolute;
+  top: 4%;
+  left: 6%;
+  right: -10%;
+  aspect-ratio: 1;
+  background: radial-gradient(circle, rgba(46, 224, 161, 0.2), rgba(62, 166, 255, 0.08) 55%, transparent 72%);
+  filter: blur(16px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero__card-stack { position: relative; z-index: 1; }
+
+@keyframes floatSoft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+
+.hero__float-card {
+  animation: floatSoft 6s ease-in-out infinite;
+  background: rgba(21, 26, 37, 0.78);
+  border: 1px solid rgba(46, 224, 161, 0.18);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 18px 45px rgba(2, 10, 20, 0.55);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.hero__float-card:hover {
+  border-color: rgba(46, 224, 161, 0.5);
+  box-shadow: 0 22px 55px rgba(2, 10, 20, 0.65), 0 0 0 1px rgba(46, 224, 161, 0.25);
+}
+
+.hero__float-card:nth-child(2) { animation-delay: 1.2s; }
+.hero__float-card:nth-child(3) { animation-delay: 2.4s; }
+
+/* pulsing dot in the eyebrow pill */
+.hero__eyebrow-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  box-shadow: 0 0 0 0 rgba(46, 224, 161, 0.55);
+  animation: pulseDot 2s ease-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pulseDot {
+  0% { box-shadow: 0 0 0 0 rgba(46, 224, 161, 0.55); }
+  70% { box-shadow: 0 0 0 9px rgba(46, 224, 161, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(46, 224, 161, 0); }
+}
+
+/* ---------- 7. Cards: consistent hover language ---------- */
+.listing-card,
+.program-card,
+.feature-list,
+.stat-card {
+  transition:
+    transform var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+.listing-card:hover,
+.program-card:hover,
+.feature-list:hover,
+.stat-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(46, 224, 161, 0.45);
+  box-shadow: var(--shadow-md), 0 0 0 1px rgba(46, 224, 161, 0.12);
+}
+
+.listing-card__media { height: 170px; }
+
+.listing-card__media > span {
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.35));
+  transition: transform var(--transition);
+}
+
+.listing-card:hover .listing-card__media > span { transform: scale(1.12); }
+
+/* ---------- 8. Panels & tables: calm structure ---------- */
+.panel { box-shadow: var(--shadow-sm); }
+
+.data-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.data-table tbody tr { transition: background var(--transition-fast); }
+
+/* ---------- 9. Forms: generous, obvious ---------- */
+.form-input,
+.form-select,
+.form-textarea {
+  background: var(--surface-inset);
+  border: 1.5px solid var(--border-color);
+  padding: 0.8rem 1rem;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(46, 224, 161, 0.18);
+  outline: none;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder { color: var(--text-muted); opacity: 0.8; }
+
+.form-label {
+  font-family: var(--font-heading);
+  letter-spacing: 0.01em;
+}
+
+/* Selects read better with the brand caret colour. */
+.form-select { appearance: auto; }
+
+/* ---------- 10. Filter bar: grouped toolbar ---------- */
+.filter-bar {
+  background: var(--surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: var(--space-4) var(--space-5);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ---------- 11. Empty states: friendly centrepiece ---------- */
+.empty-state__icon {
+  width: 84px;
+  height: 84px;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--color-primary-light);
+  border: 1px dashed rgba(46, 224, 161, 0.4);
+  font-size: 2.2rem;
+}
+
+.empty-state__title { margin-top: var(--space-6); }
+
+/* ---------- 12. Section headings: refined ornament ---------- */
+.section-heading__eyebrow::after {
+  content: '';
+  display: block;
+  width: 44px;
+  height: 3px;
+  margin: var(--space-4) auto 0;
+  border-radius: var(--border-radius-full);
+  background: var(--gradient-brand);
+}
+
+.section-heading--left .section-heading__eyebrow::after { margin-inline: 0; }
+
+.section-heading__title { font-weight: 800; }
+
+/* ---------- 13. Badges: tiny status dots ---------- */
+.badge--success::before,
+.badge--warning::before,
+.badge--danger::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* ---------- 14. FAQ: smoother open ---------- */
+.faq-item summary:hover .faq-item__q,
+.faq-item__q:hover { color: var(--color-primary); }
+
+.faq-item[open] { border-color: rgba(46, 224, 161, 0.4); }
+
+/* ---------- 15. Footer brand spacing ---------- */
+.footer__brand img { filter: drop-shadow(0 6px 16px rgba(46, 224, 161, 0.25)); }
+
+/* ---------- 17. Portal sidebar active glow ---------- */
+.portal-sidebar__link--active {
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  box-shadow: inset 3px 0 0 var(--color-primary);
+}
+
+/* ---------- 18. Hero tagline ---------- */
+.hero__tagline {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: var(--font-size-sm);
+  color: var(--teal-300);
+  margin-bottom: var(--space-5);
+}
+
+/* ---------- 19. Responsive gaps for newer grids ---------- */
+@media (max-width: 992px) {
+  .content-grid--3 { grid-template-columns: repeat(2, 1fr); }
+  .page-hero { padding-block: var(--space-16) var(--space-12); }
+}
+
+@media (max-width: 768px) {
+  .content-grid--3,
+  .content-grid--2 { grid-template-columns: 1fr; }
+  .page-hero__title { font-size: var(--font-size-2xl); }
+  .hero__tagline { letter-spacing: 0.1em; }
+  .filter-bar { flex-direction: column; align-items: stretch; }
+  .filter-bar .form-select { width: 100%; }
+}
+
+/* ---------- 20. Brand watermarks (hex logo mark) ---------- */
+.hero__hex-mark {
+  position: absolute;
+  top: -56px;
+  right: -26px;
+  opacity: 0.15;
+  transform: rotate(-8deg);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.about-split__visual {
+  position: relative;
+  overflow: hidden;
+}
+
+.about-split__visual > *:not(.about-split__hex) { position: relative; z-index: 1; }
+
+.about-split__hex {
+  position: absolute;
+  right: -30px;
+  bottom: -36px;
+  opacity: 0.2;
+  transform: rotate(10deg);
+  pointer-events: none;
+}
+
+.cta-section__hex {
+  position: absolute;
+  left: -34px;
+  top: -22px;
+  opacity: 0.14;
+  transform: rotate(-10deg);
+  pointer-events: none;
+}
+
+.cta-section__tagline {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.92);
+  margin-bottom: var(--space-4);
+}
+
+.cta-section__title,
+.cta-section__text { position: relative; z-index: 1; }
+
+@media (max-width: 640px) {
+  .hero__hex-mark { top: -34px; right: -14px; }
+  .cta-section__tagline { letter-spacing: 0.18em; }
+}

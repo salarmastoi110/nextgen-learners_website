@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 196 64" role="img" aria-label="NextGen Learners">
+  <defs>
+    <linearGradient id="ngMint" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#43f0b4"/>
+      <stop offset="1" stop-color="#17c987"/>
+    </linearGradient>
+  </defs>
+  <!-- hexagon mark: mint left half, white right half -->
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.5">
+    <path d="M 28 8.6 L 9.5 19.3 L 9.5 44.7 L 28 55.4" stroke="url(#ngMint)"/>
+    <path d="M 36 55.4 L 54.5 44.7 L 54.5 19.3 L 36 8.6" stroke="#f5f7fa"/>
+  </g>
+  <!-- code glyph </> -->
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="4.2">
+    <path d="M 25.5 25 L 18.5 32 L 25.5 39" stroke="#f5f7fa"/>
+    <path d="M 36.5 23.5 L 28.5 40.5" stroke="url(#ngMint)"/>
+    <path d="M 38.5 25 L 45.5 32 L 38.5 39" stroke="#f5f7fa"/>
+  </g>
+  <!-- wordmark -->
+  <text x="72" y="33" font-family="Poppins, Arial, sans-serif" font-size="25" font-weight="800" letter-spacing="-0.5">
+    <tspan fill="#f5f7fa">next</tspan><tspan fill="#2ee0a1">Gen</tspan>
+  </text>
+  <text x="73" y="55" font-family="Inter, Arial, sans-serif" font-size="12.5" font-weight="600" fill="#2ee0a1" letter-spacing="5.5">LEARNERS</text>
+</svg>

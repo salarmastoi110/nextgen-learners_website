@@ -1,0 +1,128 @@
+/* ============================================================
+   NextGen Learners — Design Tokens (Dark brand theme)
+   Palette (from official logo): charcoal #0B0E15 · mint #2EE0A1 · white
+   ============================================================ */
+
+:root {
+  /* Brand mint (#2EE0A1 family) */
+  --teal-50: #e8fcf2;
+  --teal-100: #c7f7e1;
+  --teal-200: #96f0cd;
+  --teal-300: #5ce8b2;
+  --teal-400: #35e5a8;
+  --teal-500: #2ee0a1;
+  --teal-600: #21bd87;
+  --teal-700: #179a6e;
+  --teal-800: #147a58;
+  --teal-900: #116148;
+
+  /* Secondary accent (electric blue) */
+  --indigo-100: #d5e8ff;
+  --indigo-300: #8ec5ff;
+  --indigo-500: #3ea6ff;
+  --indigo-600: #1f8bf5;
+  --indigo-700: #0f6fd0;
+
+  /* Neutrals — inverted for a dark UI */
+  --gray-50: #12161f;
+  --gray-100: #171d29;
+  --gray-200: #222a3a;
+  --gray-300: #303b4f;
+  --gray-400: #8b96a6;
+  --gray-500: #aab4c2;
+  --gray-600: #c6cedb;
+  --gray-700: #dde3ec;
+  --gray-800: #ecf0f6;
+  --gray-900: #f5f7fa;
+
+  /* Dark surfaces */
+  --surface: #151a25;
+  --surface-2: #1c2331;
+  --surface-3: #263042;
+  --surface-inset: #10141d;
+
+  /* Functional */
+  --color-primary: var(--teal-500);
+  --color-primary-dark: var(--teal-600);
+  --color-primary-light: rgba(46, 224, 161, 0.14);
+  --color-secondary: var(--indigo-500);
+  --color-accent: #f5a623;
+  --color-success: #2ecc8f;
+  --color-warning: #e0a33c;
+  --color-danger: #ff6b6b;
+  --color-info: #4aa8ff;
+
+  /* Backgrounds & text */
+  --bg-body: #0b0e15;
+  --bg-alt: #131824;
+  --bg-dark: #07090e;
+  --text-primary: #eef2f7;
+  --text-secondary: #c6cedb;
+  --text-muted: #8b96a6;
+  --text-inverse: #0b0e15;
+
+  /* Borders */
+  --border-color: rgba(217, 225, 232, 0.14);
+  --border-strong: rgba(217, 225, 232, 0.24);
+  --border-radius-sm: 8px;
+  --border-radius: 12px;
+  --border-radius-lg: 16px;
+  --border-radius-xl: 24px;
+  --border-radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow: 0 6px 18px rgba(0, 0, 0, 0.38);
+  --shadow-md: 0 10px 28px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 20px 48px rgba(0, 0, 0, 0.5);
+  --shadow-brand: 0 8px 28px rgba(46, 224, 161, 0.28);
+
+  /* Typography */
+  --font-heading: 'Poppins', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-md: 1.125rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+  --font-size-3xl: 2.5rem;
+  --font-size-4xl: 3.25rem;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+
+  /* Layout */
+  --container-max: 1200px;
+  --container-wide: 1400px;
+  --navbar-height: 72px;
+  --announcement-height: 40px;
+
+  /* Gradients */
+  --gradient-brand: linear-gradient(135deg, var(--teal-500), var(--teal-700));
+  --gradient-brand-soft: linear-gradient(135deg, rgba(46, 224, 161, 0.16), rgba(62, 166, 255, 0.12));
+  --gradient-dark: linear-gradient(135deg, #0b0e15, #1a2130);
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition: 0.25s ease;
+  --transition-slow: 0.4s ease;
+
+  /* Z-index */
+  --z-announcement: 900;
+  --z-navbar: 1000;
+  --z-dropdown: 1100;
+  --z-overlay: 1200;
+  --z-modal: 1300;
+}
